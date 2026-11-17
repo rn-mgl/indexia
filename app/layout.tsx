@@ -32,9 +32,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${headerFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
+      className={`flex flex-col ${headerFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex flex-col items-center justify-start bg-background min-h-full h-screen w-full overflow-y-auto scroll-smooth">
+        {children}
+      </body>
     </html>
   );
 }

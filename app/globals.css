@@ -4,4 +4,18 @@
   --font-header: var(--font-header);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
+
+  --color-background: #111318;
+  --color-surface: #1c2029;
+  --color-primary: #a3ff12;
+  --color-secondary: #00d9f5;
+  --color-accent: #ffb547;
+  --color-text: #f4f5f7;
+
+  --breakpoint-m-s: 320px;
+  --breakpoint-m-m: 375px;
+  --breakpoint-m-l: 425px;
+  --breakpoint-t: 768px;
+  --breakpoint-l-s: 1024px;
+  --breakpoint-l-l: 1440px;
 }
