@@ -12,11 +12,11 @@ const Hero = () => {
           <Logo />
 
           <div className="flex flex-row items-center justify-between gap-4 font-body text-xs l-s:text-sm">
-            <Link href="/auth/register" className="text-text/50">
+            <Link href="/auth/login" className="text-text/50">
               Sign in
             </Link>
             <Link
-              href="/auth/login"
+              href="/auth/register"
               className="p-2 rounded-lg bg-primary text-background font-medium"
             >
               Sign up

@@ -20,6 +20,10 @@ export async function POST(req: NextRequest) {
       },
     );
 
+    if (register.error) {
+      throw new Error(register.error.message);
+    }
+
     return NextResponse.json({ success: true, data: { message: register } });
   } catch (error) {
     return NextResponse.json({

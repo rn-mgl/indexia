@@ -61,7 +61,7 @@ const Register = async () => {
             </div>
 
             <div className="flex flex-row items-center justify-between gap-4 font-body text-xs l-s:text-sm">
-              <Link href="/auth/register" className="text-text/50">
+              <Link href="/auth/login" className="text-text/50">
                 Sign in
               </Link>
             </div>
@@ -98,7 +98,7 @@ const Register = async () => {
 
               <div className="font-body text-text/50 text-xs font-light w-full text-center">
                 Already have an account?{" "}
-                <Link href="/auth/register" className="text-primary font-bold">
+                <Link href="/auth/login" className="text-primary font-bold">
                   Sign in
                 </Link>
               </div>
