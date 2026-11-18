@@ -1,5 +1,7 @@
 "use client";
 
+import { LoginApiResponse } from "@/app/src/interfaces/auth.interface";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const LoginForm = () => {
@@ -19,6 +21,8 @@ const LoginForm = () => {
     });
   };
 
+  const router = useRouter();
+
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -31,9 +35,16 @@ const LoginForm = () => {
         body: JSON.stringify(login),
       });
 
-      const resolve = await response.json();
+      const resolve: LoginApiResponse = await response.json();
 
-      console.log(resolve);
+      if (!resolve.success) {
+        console.log(resolve);
+        if (resolve.data.status === 403) {
+          router.push("/auth/send");
+        }
+
+        throw new Error(resolve.data.error);
+      }
     } catch (error) {
       console.log(error);
     }

@@ -1,3 +1,6 @@
+import { ApiResponse } from "@/app/src/interfaces/api.interface";
+import ApiError from "@/app/src/libs/api.lib";
+import { extractApiError } from "@/app/src/utils/api.util";
 import { env } from "@/configs/env.config";
 import { auth } from "@/libs/auth.lib";
 import { NextRequest, NextResponse } from "next/server";
@@ -21,14 +24,27 @@ export async function POST(req: NextRequest) {
     );
 
     if (register.error) {
-      throw new Error(register.error.message);
+      throw new ApiError(
+        register.error?.message || "An error occured during login.",
+        register.error.status,
+      );
     }
 
-    return NextResponse.json({ success: true, data: { message: register } });
+    const apiResponse: ApiResponse<{ message: string }> = {
+      data: { message: "Registered successfully." },
+      success: true,
+    };
+
+    return NextResponse.json(apiResponse, { status: 200 });
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      data: { message: error },
-    });
+    const { message, status } = extractApiError(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        data: { message: message, status: status },
+      },
+      { status: status },
+    );
   }
 }

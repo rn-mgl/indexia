@@ -1,5 +1,7 @@
 "use client";
 
+import { RegisterApiResponse } from "@/app/src/interfaces/auth.interface";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const RegisterForm = () => {
@@ -8,6 +10,8 @@ const RegisterForm = () => {
     email: "",
     password: "",
   });
+
+  const router = useRouter();
 
   const handleRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,9 +36,13 @@ const RegisterForm = () => {
         body: JSON.stringify(register),
       });
 
-      const resolve = await response.json();
+      const resolve: RegisterApiResponse = await response.json();
 
-      console.log(resolve);
+      if (!resolve.success) {
+        throw new Error(resolve.data.error);
+      }
+
+      router.push("/auth/send");
     } catch (error) {
       console.log(error);
     }

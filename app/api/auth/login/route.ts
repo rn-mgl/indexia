@@ -1,5 +1,8 @@
 import { env } from "@/app/src/configs/env.config";
+import { ApiResponse } from "@/app/src/interfaces/api.interface";
+import ApiError from "@/app/src/libs/api.lib";
 import { auth } from "@/app/src/libs/auth.lib";
+import { extractApiError } from "@/app/src/utils/api.util";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -20,14 +23,27 @@ export async function POST(req: NextRequest) {
     );
 
     if (login.error) {
-      throw new Error(login.error.message);
+      throw new ApiError(
+        login.error?.message || "An error occured during login.",
+        login.error.status,
+      );
     }
 
-    return NextResponse.json({ success: true, data: { message: login } });
-  } catch (error) {
-    return NextResponse.json({
-      success: false,
-      data: { message: error.message },
-    });
+    const apiResponse: ApiResponse<{ message: string }> = {
+      data: { message: "Logged in successfully." },
+      success: true,
+    };
+
+    return NextResponse.json(apiResponse, { status: 200 });
+  } catch (error: unknown) {
+    const { message, status } = extractApiError(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        data: { message: message, status: status },
+      },
+      { status: status },
+    );
   }
 }
