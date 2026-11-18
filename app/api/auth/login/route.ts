@@ -1,4 +1,4 @@
-import { auth } from "@/app/src/lib/auth.lib";
+import { auth } from "@/app/src/libs/auth.lib";
 import { NextRequest, NextResponse } from "next/server";
 
 export default async function POST(req: NextRequest) {

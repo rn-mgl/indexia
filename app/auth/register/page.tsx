@@ -1,8 +1,9 @@
+import RegisterForm from "@/app/src/components/auth/register/RegisterForm";
 import Logo from "@/app/src/components/global/Logo";
 import Link from "next/link";
 import React from "react";
 
-const Register = () => {
+const Register = async () => {
   return (
     <div className="w-full h-full flex flex-row items-center justify-center">
       <div
@@ -78,55 +79,7 @@ const Register = () => {
                 </p>
               </div>
 
-              <form className="flex flex-col items-start justify-center gap-4 w-full">
-                <div className="w-full flex flex-col gap-1 font-body">
-                  <label htmlFor="name" className="text-xs text-text/50">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    placeholder="Name"
-                    type="text"
-                    required={true}
-                    className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-                  />
-                </div>
-
-                <div className="w-full flex flex-col gap-1 font-body">
-                  <label htmlFor="name" className="text-xs text-text/50">
-                    Email
-                  </label>
-                  <input
-                    id="name"
-                    placeholder="Email"
-                    type="email"
-                    required={true}
-                    className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-                  />
-                </div>
-
-                <div className="w-full flex flex-col gap-1 font-body">
-                  <label htmlFor="name" className="text-xs text-text/50">
-                    Password
-                  </label>
-                  <input
-                    id="name"
-                    placeholder="Password"
-                    type="password"
-                    required={true}
-                    className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-                  />
-                </div>
-
-                <div className="flex w-full flex-row items-center gap-4 font-body text-sm font-medium">
-                  <button
-                    type="submit"
-                    className="w-full p-2 rounded-lg bg-primary text-background font-bold text-center"
-                  >
-                    Create account
-                  </button>
-                </div>
-              </form>
+              <RegisterForm />
 
               <div className="w-full flex flex-row gap-2 items-center justify-center text-text/50 text-xs font-body font-light">
                 <div className="w-full border border-text/10 h-0" />
