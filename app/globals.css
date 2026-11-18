@@ -19,3 +19,9 @@
   --breakpoint-l-s: 1024px;
   --breakpoint-l-l: 1440px;
 }
+
+@layer components {
+  button {
+    cursor: pointer;
+  }
+}

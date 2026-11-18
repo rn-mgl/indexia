@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`flex flex-col ${headerFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
     >
-      <body className="flex flex-col items-center justify-start bg-background min-h-full h-screen w-full overflow-y-auto scroll-smooth">
+      <body className="flex flex-col items-center justify-start bg-background min-h-full h-screen w-full overflow-y-auto scroll-smooth relative">
         {children}
       </body>
     </html>

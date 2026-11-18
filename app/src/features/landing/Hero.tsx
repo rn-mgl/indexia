@@ -1,4 +1,6 @@
+import Link from "next/link";
 import React from "react";
+import Logo from "@/components/global/Logo";
 
 const Hero = () => {
   return (
@@ -7,15 +9,18 @@ const Hero = () => {
         <div className="aspect-square w-full max-w-96 bg-surface rounded-full absolute blur-3xl -z-10"></div>
 
         <div className="w-full flex flex-row items-center justify-between text-sm p-4 l-s:text-base">
-          <p className="text-text font-header ">
-            index<span className="text-primary">ia</span>
-          </p>
+          <Logo />
 
           <div className="flex flex-row items-center justify-between gap-4 font-body text-xs l-s:text-sm">
-            <button className="text-text/50">Sign in</button>
-            <button className="p-2 rounded-lg bg-primary text-background font-medium">
+            <Link href="/auth/register" className="text-text/50">
+              Sign in
+            </Link>
+            <Link
+              href="/auth/login"
+              className="p-2 rounded-lg bg-primary text-background font-medium"
+            >
               Sign up
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -34,12 +39,18 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-row items-center gap-4 font-body text-sm font-medium t:max-w-(--breakpoint-m-s)">
-              <button className="w-full p-2 rounded-lg bg-primary text-background font-medium">
+              <Link
+                href="/auth/register"
+                className="w-full p-2 rounded-lg bg-primary text-background font-medium text-center"
+              >
                 Create free account
-              </button>
-              <button className="w-fit text-nowrap text-text/50 border border-text/50 p-2 rounded-lg px-4">
+              </Link>
+              <Link
+                href="/auth/login"
+                className="w-fit text-nowrap text-text/50 border border-text/50 p-2 rounded-lg px-4 text-center"
+              >
                 Sign In
-              </button>
+              </Link>
             </div>
 
             <p className="text-xs text-text/40 font-light">
@@ -55,7 +66,7 @@ const Hero = () => {
                   <div className="aspect-square w-2 h-2 rounded-full bg-primary absolute" />
                 </div>
 
-                <p>LIVE RACE</p>
+                <p className="font-bold">LIVE RACE</p>
               </div>
 
               <p className="text-text/50 font-mono">#Round 1234</p>
@@ -101,6 +112,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <div className="aspect-square w-full max-w-72 bg-primary/5 rounded-full bottom-0 right-0 absolute blur-3xl -z-10"></div>
     </div>
   );
 };
