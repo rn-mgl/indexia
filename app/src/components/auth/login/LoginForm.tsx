@@ -38,7 +38,6 @@ const LoginForm = () => {
       const resolve: LoginApiResponse = await response.json();
 
       if (!resolve.success) {
-        console.log(resolve);
         if (resolve.data.status === 403) {
           router.push("/auth/sending");
         }

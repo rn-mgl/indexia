@@ -21,8 +21,6 @@ export async function POST(req: NextRequest) {
       },
     );
 
-    console.log(resend);
-
     if (resend.error) {
       throw new ApiError(
         resend.error.message || "An error occurred during sending.",

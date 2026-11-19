@@ -30,8 +30,6 @@ const ResendForm = () => {
       });
 
       const resolve = await response.json();
-
-      console.log(resolve);
     } catch (error) {
       console.log(error);
     }
