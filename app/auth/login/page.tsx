@@ -7,7 +7,7 @@ const Login = () => {
     <div className="w-full h-full flex flex-row items-center justify-center">
       <div
         className="w-full hidden t:flex p-4 t:p-8 bg-surface border-r 
-                    border-text/10 h-full flex-col items-end justify-center gap-4 text-xs z-10"
+                    border-text/10 h-full flex-col items-end justify-center gap-4 z-10"
       >
         <div className="w-full h-full max-w-(--breakpoint-t) flex flex-col items-start justify-between">
           <div className="hidden t:flex">

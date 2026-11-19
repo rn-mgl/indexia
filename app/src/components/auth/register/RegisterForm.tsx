@@ -42,7 +42,7 @@ const RegisterForm = () => {
         throw new Error(resolve.data.error);
       }
 
-      router.push("/auth/send");
+      router.push("/auth/sending");
     } catch (error) {
       console.log(error);
     }

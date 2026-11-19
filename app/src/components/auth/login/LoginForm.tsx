@@ -40,7 +40,7 @@ const LoginForm = () => {
       if (!resolve.success) {
         console.log(resolve);
         if (resolve.data.status === 403) {
-          router.push("/auth/send");
+          router.push("/auth/sending");
         }
 
         throw new Error(resolve.data.error);
