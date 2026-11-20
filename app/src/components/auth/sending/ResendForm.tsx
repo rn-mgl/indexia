@@ -1,4 +1,5 @@
 "use client";
+import { SendingApiResponse } from "@/app/src/interfaces/auth.interface";
 import React from "react";
 
 const ResendForm = () => {
@@ -29,7 +30,11 @@ const ResendForm = () => {
         body: JSON.stringify(resend),
       });
 
-      const resolve = await response.json();
+      const resolve: SendingApiResponse = await response.json();
+
+      if (!resolve.success) {
+        throw new Error(resolve.data.error);
+      }
     } catch (error) {
       console.log(error);
     }
