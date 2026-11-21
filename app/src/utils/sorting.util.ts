@@ -8,7 +8,7 @@ export const START_VALUES = [
   12, 15,
 ];
 
-export const STEP_MS = 120;
+export const STEP_MS = 100;
 
 export const PAUSE_MS = 1200;
 
