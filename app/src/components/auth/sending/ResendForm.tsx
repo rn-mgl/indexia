@@ -1,4 +1,6 @@
 "use client";
+
+import Input from "@/components/form/Input";
 import { SendingApiResponse } from "@/app/src/interfaces/auth.interface";
 import React from "react";
 
@@ -45,21 +47,16 @@ const ResendForm = () => {
       onSubmit={(e) => handleSubmit(e)}
       className="flex flex-col items-start justify-center gap-4 w-full"
     >
-      <div className="w-full flex flex-col gap-1 font-body">
-        <label htmlFor="name" className="text-xs text-text/50">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          type="email"
-          value={resend.email}
-          required={true}
-          onChange={(e) => handleResend(e)}
-          className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-        />
-      </div>
+      <Input
+        label="Email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={resend.email}
+        required={true}
+        onChange={handleResend}
+      />
 
       <div className="flex w-full flex-row items-center gap-4 font-body text-sm font-medium">
         <button

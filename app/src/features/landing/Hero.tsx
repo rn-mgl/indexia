@@ -1,8 +1,28 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "@/components/global/Logo";
+import SortingAnimation from "@/components/sorting/SortingAnimation";
+
+const sortingAlgorithmOptions = [
+  { id: "quickSort", label: "Quick Sort" },
+  { id: "insertionSort", label: "Insertion Sort" },
+  { id: "bubbleSort", label: "Bubble Sort" },
+] as const;
 
 const Hero = () => {
+  const algorithmCards = sortingAlgorithmOptions.map((option) => (
+    <div
+      key={option.id}
+      className="bg-background p-2 h-full gap-8 border-text/20 w-full border rounded-lg flex flex-row items-start justify-between"
+    >
+      <div className="flex flex-col text-nowrap">
+        <p className="font-header font-bold text-text">{option.label}</p>
+      </div>
+
+      <SortingAnimation algorithm={option.id} />
+    </div>
+  ));
+
   return (
     <div className="w-full h-full flex flex-col items-center justify-start">
       <div className="w-full h-full max-w-(--breakpoint-l-s) flex flex-col items-center justify-between relative">
@@ -59,23 +79,8 @@ const Hero = () => {
           </div>
 
           <div className="w-full hidden t:flex bg-surface p-4 rounded-xl border border-text/10 h-full flex-col items-start justify-between gap-4 text-xs">
-            <div className="flex flex-row items-center justify-between w-full font-header text-primary">
-              <div className="flex items-center justify-center gap-4">
-                <div className="relative flex flex-col items-center justify-center">
-                  <div className="aspect-square w-3 h-3 rounded-full bg-primary animate-ping absolute" />
-                  <div className="aspect-square w-2 h-2 rounded-full bg-primary absolute" />
-                </div>
-
-                <p className="font-bold">LIVE RACE</p>
-              </div>
-
-              <p className="text-text/50 font-mono">#Round 1234</p>
-            </div>
-
-            <div className="flex flex-col items-start justify-start gap-4 w-full">
-              <div className="bg-background p-8 border-text/30 w-full border rounded-lg"></div>
-              <div className="bg-background p-8 border-text/30 w-full border rounded-lg"></div>
-              <div className="bg-background p-8 border-text/30 w-full border rounded-lg"></div>
+            <div className="items-start justify-start gap-2 w-full h-full grid grid-cols-1 ">
+              {algorithmCards}
             </div>
           </div>
         </div>

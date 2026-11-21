@@ -1,5 +1,6 @@
 "use client";
 
+import Input from "@/components/form/Input";
 import { LoginApiResponse } from "@/app/src/interfaces/auth.interface";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -54,37 +55,27 @@ const LoginForm = () => {
       onSubmit={(e) => handleSubmit(e)}
       className="flex flex-col items-start justify-center gap-4 w-full"
     >
-      <div className="w-full flex flex-col gap-1 font-body">
-        <label htmlFor="name" className="text-xs text-text/50">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          placeholder="Email"
-          type="email"
-          value={login.email}
-          required={true}
-          onChange={(e) => handleLogin(e)}
-          className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-        />
-      </div>
+      <Input
+        label="Email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        type="email"
+        value={login.email}
+        required={true}
+        onChange={handleLogin}
+      />
 
-      <div className="w-full flex flex-col gap-1 font-body">
-        <label htmlFor="name" className="text-xs text-text/50">
-          Password
-        </label>
-        <input
-          id="password"
-          name="password"
-          placeholder="Password"
-          type="password"
-          required={true}
-          onChange={(e) => handleLogin(e)}
-          value={login.password}
-          className="w-full p-2 bg-surface border-text/10 border outline-none rounded-lg text-sm placeholder:text-text/20 text-text"
-        />
-      </div>
+      <Input
+        label="Password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        type="password"
+        value={login.password}
+        required={true}
+        onChange={handleLogin}
+      />
 
       <div className="flex w-full flex-row items-center gap-4 font-body text-sm font-medium">
         <button
