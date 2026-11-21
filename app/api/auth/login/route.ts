@@ -9,6 +9,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
+    let setCookies: string[] = [];
+
     const login = await auth.signIn.email(
       {
         email: body.email,
@@ -18,6 +20,11 @@ export async function POST(req: NextRequest) {
         headers: {
           "content-type": "application/json",
           origin: env.ORIGIN,
+        },
+        onSuccess: ({ response }) => {
+          const headers = response.headers;
+
+          setCookies = headers.getSetCookie();
         },
       },
     );
@@ -34,7 +41,15 @@ export async function POST(req: NextRequest) {
       success: true,
     };
 
-    return NextResponse.json(apiResponse, { status: 200 });
+    const response = NextResponse.json(apiResponse, {
+      status: 200,
+    });
+
+    for (const cookie of setCookies) {
+      response.headers.append("set-cookie", cookie);
+    }
+
+    return response;
   } catch (error: unknown) {
     const { message, status } = extractApiError(error);
 

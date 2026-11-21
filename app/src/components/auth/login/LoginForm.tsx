@@ -45,6 +45,8 @@ const LoginForm = () => {
 
         throw new Error(resolve.data.error);
       }
+
+      router.push("/indexia");
     } catch (error) {
       console.log(error);
     }
