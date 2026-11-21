@@ -6,6 +6,7 @@ import SortingAnimation from "@/components/sorting/SortingAnimation";
 const sortingAlgorithmOptions = [
   { id: "quickSort", label: "Quick Sort" },
   { id: "insertionSort", label: "Insertion Sort" },
+  { id: "selectionSort", label: "Selection Sort" },
   { id: "bubbleSort", label: "Bubble Sort" },
 ] as const;
 
@@ -15,8 +16,8 @@ const Hero = () => {
       key={option.id}
       className="bg-background p-2 h-full gap-8 border-text/20 w-full border rounded-lg flex flex-row items-start justify-between"
     >
-      <div className="flex flex-col text-nowrap">
-        <p className="font-header font-bold text-text">{option.label}</p>
+      <div className="flex flex-col text-nowrap w-32">
+        <p className="font-header font-medium text-text">{option.label}</p>
       </div>
 
       <SortingAnimation algorithm={option.id} />

@@ -84,6 +84,49 @@ export const insertionSort: SortingAlgorithm = (values) => {
   return recorder.getFrames();
 };
 
+export const selectionSort: SortingAlgorithm = (values) => {
+  const recorder = createFrameRecorder(values);
+  const valueCount = recorder.getValues().length;
+
+  recorder.capture();
+
+  for (let currentIndex = 0; currentIndex < valueCount - 1; currentIndex++) {
+    let minimumIndex = currentIndex;
+
+    for (let scanIndex = currentIndex + 1; scanIndex < valueCount; scanIndex++) {
+      recorder.capture({
+        activeIndices: [minimumIndex, scanIndex],
+        pivotIndex: currentIndex,
+      });
+
+      if (recorder.getValues()[scanIndex] < recorder.getValues()[minimumIndex]) {
+        minimumIndex = scanIndex;
+      }
+    }
+
+    if (minimumIndex !== currentIndex) {
+      recorder.swap(currentIndex, minimumIndex);
+
+      recorder.capture({
+        activeIndices: [currentIndex, minimumIndex],
+        pivotIndex: currentIndex,
+      });
+    }
+
+    recorder.markSettled(currentIndex);
+
+    recorder.capture();
+  }
+
+  if (valueCount > 0) {
+    recorder.markSettled(valueCount - 1);
+  }
+
+  recorder.capture();
+
+  return recorder.getFrames();
+};
+
 export const bubbleSort: SortingAlgorithm = (values) => {
   const recorder = createFrameRecorder(values);
   const valueCount = recorder.getValues().length;
@@ -145,5 +188,6 @@ export const bubbleSort: SortingAlgorithm = (values) => {
 export const sortingAlgorithms = {
   quickSort,
   insertionSort,
+  selectionSort,
   bubbleSort,
 } satisfies Record<SortingAlgorithmId, SortingAlgorithm>;

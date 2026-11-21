@@ -7,3 +7,5 @@ export type LoginApiResponse = ApiResponse<{ message: string }>;
 export type SendingApiResponse = ApiResponse<{ message: string }>;
 
 export type VerifyApiResponse = ApiResponse<{ message: string }>;
+
+export type LogoutApiResponse = ApiResponse<{ message: string }>;

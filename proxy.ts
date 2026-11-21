@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 export function proxy(req: NextRequest) {
   const session = getSessionCookie(req);
 
+  console.log(session);
+
   if (!session) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
   }

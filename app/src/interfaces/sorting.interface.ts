@@ -14,7 +14,11 @@ export type SortingAlgorithm = (
   values: readonly number[],
 ) => readonly SortFrame[];
 
-export type SortingAlgorithmId = "quickSort" | "insertionSort" | "bubbleSort";
+export type SortingAlgorithmId =
+  | "quickSort"
+  | "insertionSort"
+  | "selectionSort"
+  | "bubbleSort";
 
 export interface SortingAnimationProps {
   algorithm: SortingAlgorithmId;
